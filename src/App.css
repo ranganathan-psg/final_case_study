@@ -1,0 +1,291 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.black-clr {
+  color: white !important;
+}
+
+.parellogram {
+  transform: skewX(-20deg);
+  border-bottom: 200px solid red;
+  height: 100px;
+  width: 350px;
+  margin: 20px;
+
+}
+
+.margin-left-120 {
+  margin-left: 120px;
+
+}
+
+.homeComponent {
+  background-color: #080325;
+}
+
+.home-option {
+  text-align: center;
+  display: inline-flex;
+}
+
+.banner-w {
+  float: left;
+  padding: 20px;
+
+}
+
+.banner {
+  position: relative;
+  background: #211C3B;
+  float: left;
+  height: 50px;
+  left: 50px;
+  width: 250px;
+  line-height: 50px;
+  margin: 0;
+  margin-right: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.banner:before,
+.banner:after {
+  content: "\0020";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.banner:before {
+  right: 100%;
+
+  border-width: 0 0 50px 50px;
+  border-color: transparent transparent #211C3B transparent;
+}
+
+.banner:after {
+  left: 100%;
+  border-width: 50px 50px 0 0;
+  border-color: #211C3B transparent transparent transparent;
+}
+
+.margin-right-20px {
+  margin-right: 20px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.right_conatct_social_icon {
+  background: linear-gradient(to top right, #1325e8 -5%, #8f10b7 100%);
+}
+
+.contact_us {
+  background-color: #f1f1f1;
+  padding: 120px 0px;
+}
+
+.contact_inner {
+  background-color: #fff;
+  position: relative;
+  box-shadow: 20px 22px 44px #cccc;
+  border-radius: 25px;
+}
+
+.contact_field {
+  padding: 60px 340px 90px 100px;
+}
+
+.right_conatct_social_icon {
+  height: 100%;
+}
+
+.contact_field h3 {
+  color: #000;
+  font-size: 40px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 10px
+}
+
+.contact_field p {
+  color: #000;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 35px;
+}
+
+.contact_field .form-control {
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.contact_field .form-control:focus {
+  box-shadow: none;
+  outline: none;
+  border-bottom: 2px solid #1325e8;
+}
+
+.contact_field .form-control::placeholder {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.contact_info_sec {
+  position: absolute;
+  background-color: #080325;
+  right: 1px;
+  top: 18%;
+  height: 340px;
+  width: 340px;
+  padding: 40px;
+  border-radius: 25px 0 0 25px;
+  color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .contact_info_sec {
+    position: relative;
+    margin-top: 10px;
+  }
+
+  .contact_field {
+    padding: 10px;
+  }
+}
+
+.contact_info_sec h4 {
+  letter-spacing: 1px;
+  padding-bottom: 15px;
+}
+
+.info_single {
+  margin: 30px 0px;
+}
+
+.info_single i {
+  margin-right: 15px;
+}
+
+.info_single span {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+button.contact_form_submit {
+  background: linear-gradient(to top right, #1325e8 -5%, #8f10b7 100%);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  width: 100%;
+  margin-top: 25px;
+  border-radius: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+button.contact_form_submitDis {
+
+  padding: 10px 15px;
+  width: 100%;
+  margin-top: 25px;
+  border-radius: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: grey !important;
+  background: lightgrey;
+  border: 2px solid gray
+}
+
+.socil_item_inner li {
+  list-style: none;
+}
+
+.socil_item_inner li a {
+  color: #fff;
+  margin: 0px 15px;
+  font-size: 14px;
+}
+
+.socil_item_inner {
+  padding-bottom: 10px;
+}
+
+.map_sec {
+  padding: 50px 0px;
+}
+
+.map_inner h4,
+.map_inner p {
+  color: #000;
+  text-align: center
+}
+
+.map_inner p {
+  font-size: 13px;
+}
+
+.map_bind {
+  margin-top: 50px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.jobListing {
+  height: 150px;
+  background: #080325;
+  color: white;
+  padding-top: 50px;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.error {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: #dc3545;
+}

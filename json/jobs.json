@@ -1,0 +1,51 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "role": "Senior Manager",
+      "company": "Cognizant",
+      "experience": "12-14 Yrs",
+      "salary": "16,00,000",
+      "location": "Coimbatore"
+    },
+    {
+      "id": 2,
+      "role": "senior Associate",
+      "company": "Tata Consultancy",
+      "experience": "9-10 yrs",
+      "salary": "12,00,000",
+      "location": "Kochi"
+    },
+    {
+      "id": 3,
+      "role": "Account Officer - Banking",
+      "company": "Infosys",
+      "experience": "7-8 yrs",
+      "salary": "7,00,000",
+      "location": "Chennai"
+    },
+    {
+      "id": 4,
+      "role": "Assistant Manager",
+      "company": "Infosys",
+      "experience": "12-13 yrs",
+      "salary": "8,00,000",
+      "location": "Chennai"
+    },
+    {
+      "id": 5,
+      "role": "Technical Architect",
+      "company": "Capgimini",
+      "experience": "14-16 yrs",
+      "salary": "12,00,000",
+      "location": "Bangalore"
+    }
+  ],
+  "messages": {
+    "name": "Ranganathan",
+    "email": "test@tst.com",
+    "phone": "9080032313",
+    "message": "asdassadsa"
+  },
+  "applications": []
+}

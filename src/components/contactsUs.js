@@ -82,11 +82,10 @@ class ContactsUs extends Component {
     handleSubmit(e) {
         let res = validating(this.state);
         console.log("errors", res);
-        this.setState({ ...this.state, errors: res, validated: true, loading: true })
+        this.setState({ ...this.state, errors: res, validated: true })
         if (Object.keys(res).length > 0) {
             console.log(Object.keys(res).length);
             e.stopPropagation();
-
         }
         else {
 

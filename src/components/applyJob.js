@@ -99,16 +99,18 @@ class ApplyJob extends Component {
         let res = validating(this.state)
         console.log("errors", res)
 
-        this.setState({ ...this.state, errors: res, validated: true,loading: true })
+        this.setState({ ...this.state, errors: res, validated: true})
         console.log("state", this.state)
         if (form.checkValidity() === false) {
             e.preventDefault();
 
         }
         if (Object.keys(res).length > 0) {
+           
             console.log(Object.keys(res).length)
             e.stopPropagation();
         } else {
+            this.setState({ ...this.state, errors: res, validated: true,loading: true })
             let appdt = {
                 name: this.state.name,
                 email: this.state.email,

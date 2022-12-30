@@ -2,6 +2,7 @@ export const GETALLJOBS = "GET_ALL_JOBS";
 export const APPYJOB = "APPY_JOB";
 export const CONTACTUS = "CONTACT_US"
 
+// feth action for getting all jobs and api call
 export const getAllJobs = () => {
     return async function (dispatch, getstate, serviceapi) {
         await serviceapi.get("/jobs").then((data) => {
@@ -16,6 +17,7 @@ export const getAllJobs = () => {
     }
 }
 
+// saving the apply job data and sendoing it to server action
 export const applyJob = (appdata) => {
     return async function (dispatch, getState, serviceapi) {
         await serviceapi.post("applications",appdata).then((data) => {
@@ -38,7 +40,7 @@ export const applyJob = (appdata) => {
     }
 }
 
-
+// saving contactus form and sending to server
 export const contactUs = (appdata) => {
     return async function (dispatch, getState, serviceapi) {
         await serviceapi.post("messages",appdata).then((data) => {

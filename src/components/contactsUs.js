@@ -4,6 +4,7 @@ import { contactUs } from '../redux/actions';
 import { ToastContainer, toast } from "react-toastify";
 import { CircleSpinnerOverlay } from 'react-spinner-overlay';
 
+//validation function
 const validating = (val) => {
     let values = val;
     let errorst = {};
@@ -12,16 +13,19 @@ const validating = (val) => {
     const validEmailRegex = RegExp(
         /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     );
+    // name validation
     if (!values.name) {
         errorst.name = "Name is required!";
     } else if (!nameRegx.test(values.name)) {
         errorst.name = "Only letters alowed in Name";
     }
+    //email validation
     if (!values.email) {
         errorst.email = "Email is required!";
     } else if (!validEmailRegex.test(values.email)) {
         errorst.email = "This is not a valid email format!";
     }
+    // phone validation
     if (!values.phone) {
         errorst.phone = "Phone number is required!";
     }
@@ -32,6 +36,7 @@ const validating = (val) => {
     } else if (values.phone.length > 10) {
         errorst.phone = "Phone number cannot exceed more than 10 characters";
     }
+    // message validation
     if (!values.message) {
         errorst.message = "Message is required";
     } else if (values.message.length < 10) {
@@ -47,6 +52,7 @@ class ContactsUs extends Component {
 
     constructor() {
         super();
+        // creating local state
         this.state = {
             canSubmit: true,
             loading: false,
@@ -59,6 +65,7 @@ class ContactsUs extends Component {
         }
     }
 
+    // handling on change event for all text boxes
     handleOnchange = (e, key) => {
         let value = e.target.value;
         switch (key) {
@@ -79,16 +86,18 @@ class ContactsUs extends Component {
         }
     }
 
+    // submition of contact us form to server
     handleSubmit(e) {
+        //doing validation
         let res = validating(this.state);
-        console.log("errors", res);
+        // console.log("errors", res);
         this.setState({ ...this.state, errors: res, validated: true })
         if (Object.keys(res).length > 0) {
             console.log(Object.keys(res).length);
             e.stopPropagation();
         }
         else {
-
+            this.setState({ ...this.state, validated: true, loading: true });
             let appdt = {
                 name: this.state.name,
                 email: this.state.email,
@@ -97,7 +106,7 @@ class ContactsUs extends Component {
             };
             this.props.contactUs(appdt).then((data) => {
                 this.setState({ ...this.state, name: "", phone: "", message: "", email: "" });
-                if (this.props.contactMsg=="Thanks for Contacting will get back to soon ☺️") {
+                if (this.props.contactMsg=="Thanks for Contacting will get back to you soon! ☺️") {
                     this.setState({ ...this.state, validated: true, loading: false });
                     toast.success(this.props.contactMsg, {
                         position: "top-center",
@@ -112,7 +121,6 @@ class ContactsUs extends Component {
                 }else{
                     this.setState({ ...this.state, validated: true, loading: false });
                     toast.error(this.props.contactMsg, {
-                        
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -132,6 +140,7 @@ class ContactsUs extends Component {
         return (
             <div>
                 <ToastContainer />
+                {/* enabling spinner loader  based on condition */}
                 {
                     this.state.loading ? <CircleSpinnerOverlay loading={this.state.loading}
                     overlayColor="rgba(0,153,255,0.2)" color="#8f10b7"
@@ -146,7 +155,7 @@ class ContactsUs extends Component {
                                         <div className="col-md-10">
                                             <div className="contact_form_inner">
                                                 <div className="contact_field">
-                                                    <h3>Contatc Us</h3>
+                                                    <h3>Contact Us</h3>
                                                     <p>Feel Free to contact us any time. We will get back to you as soon as we can!.</p>
                                                     <input type="text" className="form-control form-group" value={this.state.name} placeholder="Name" onChange={(e) => this.handleOnchange(e, "name")} />
                                                     {
@@ -168,7 +177,7 @@ class ContactsUs extends Component {
                                                         this.state.errors.message ?
                                                             <span className='error'>{this.state.errors.message}</span> : ""
                                                     }
-                                                    <button onClick={(e) => this.handleSubmit(e)} className="contact_form_submit"  >Send</button>
+                                                    <button data-testid='sumbit_button' onClick={(e) => this.handleSubmit(e)} className="contact_form_submit"  >Send</button>
                                                 </div>
                                             </div>
                                         </div>

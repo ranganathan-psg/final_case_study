@@ -1,12 +1,13 @@
 import { APPYJOB, CONTACTUS, GETALLJOBS } from "./actions";
 
+// initialising redux state
 const initialState = {
     jobs: [],
     appliedMessage:"",
     contactMsg:""
 }
 
-
+// reducer for all action checing with switch case
 function reducer(state = initialState, action) {
     switch (action.type) {
         case GETALLJOBS:

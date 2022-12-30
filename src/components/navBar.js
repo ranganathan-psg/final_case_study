@@ -9,30 +9,33 @@ const navbar = {backgroundColor: '#080325'};
 class NavBar extends Component {
     render() {
         return (
+            // Nav bar Container
             <div >
                 <Navbar collapseOnSelect expand="lg"  variant="dark"
                     style={navbar}>
                     <Container>
+                        {/*  title and logo */}
                         <Navbar.Brand as={Link} to="/"><img
                             src={logo}
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
                             alt="React Bootstrap logo"
-                        /> Top Jobs</Navbar.Brand>
+                        />Top Jobs</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
-
                             </Nav>
+                            {/* Nav Links */}
                             <Nav>
                                 <Nav.Link as={Link} to="/" >Home</Nav.Link>
                                 <Nav.Link as={Link} to="/contact">ContactUs</Nav.Link>
-                                <Nav.Link as={Link} to="/jobs" >Jobs</Nav.Link>
+                                <Nav.Link as={Link} to="/jobs">Jobs</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
+                {/* Other routing injection */}
                 <Outlet></Outlet>
             </div>
         );

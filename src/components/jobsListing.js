@@ -14,19 +14,22 @@ class JobsListing extends Component {
 
     constructor() {
         super();
+        // creating local state
         this.state = { showPop: false, applyId: ""}
     }
 
     componentDidMount() {
+        // fetching job post list from server
         this.props.getAllJobs();
     }
 
+    //opening pop up while clicking on apply button
     handleApplyJob = (id) => {
         this.setState({ showPop: true, applyId: id });
     }
 
     
-
+    // submiting apply apllication for job
     handleApplication = () => {
         this.handleClose()
         // this.setState({ ...this.state, loading: false, showPop: false })
@@ -55,9 +58,9 @@ class JobsListing extends Component {
             });
         }
     }
+    //handling closing of popup
     handleClose = () => {
         this.setState({ showPop: false });
-
     }
     render() {
         return (
@@ -73,6 +76,7 @@ class JobsListing extends Component {
                     {
                         this.props.jobs.map(job => {
                             return (
+                                // looping list of job post
                                 <div key={job.id} className="card " style={{ width: "100%", marginBottom: "15px" }}>
                                     <div className="card-body">
                                         <h5 className="card-title">{job.role}</h5>

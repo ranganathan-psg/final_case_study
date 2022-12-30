@@ -2,6 +2,19 @@
   "name": "top-jobs",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    },
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "test-config",
+      "reportWebVitals",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/redux/reducer.js",
+      "<rootDir>/src/redux/actions.js"
+    ]
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
@@ -21,12 +34,14 @@
     "react-scripts": "5.0.1",
     "react-spinner-overlay": "^0.1.33",
     "react-toastify": "^9.1.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "redux-thunk": "^2.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "json-server": "json-server --watch json/jobs.json --port 3001"
   },

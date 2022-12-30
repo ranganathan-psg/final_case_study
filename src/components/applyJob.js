@@ -4,8 +4,9 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import { applyJob } from '../redux/actions';
-import { CircleSpinnerOverlay } from 'react-spinner-overlay'
+import { CircleSpinnerOverlay } from 'react-spinner-overlay';
 
+//validation function
 const validating = (val) => {
     let values = val;
     let errorst = {};
@@ -14,16 +15,19 @@ const validating = (val) => {
     const validEmailRegex = RegExp(
         /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     );
+    // name validation
     if (!values.name) {
         errorst.name = "Name is required!";
     } else if (!nameRegx.test(values.name)) {
         errorst.name = "Only letters alowed in Name";
     }
+    // email validation
     if (!values.email) {
         errorst.email = "Email is required!";
     } else if (!validEmailRegex.test(values.email)) {
         errorst.email = "This is not a valid email format!";
     }
+    // phone validation
     if (!values.phone) {
         errorst.phone = "Phone number is required!";
     }
@@ -34,6 +38,7 @@ const validating = (val) => {
     } else if (values.phone.length > 10) {
         errorst.phone = "Phone number cannot exceed more than 10 characters";
     }
+    // experience validation
     if (!values.experience) {
         errorst.experience = "Experience is required";
     } else if (values.experience.length < 10) {
@@ -41,13 +46,13 @@ const validating = (val) => {
     } else if (values.experience.length > 150) {
         errorst.experience = "Experience cannot exceed more than 150 characters";
     }
-
-
     return errorst;
 }
+
 class ApplyJob extends Component {
     constructor() {
         super();
+        // creating local state
         this.state = {
             name: "",
             email: "",
@@ -59,10 +64,12 @@ class ApplyJob extends Component {
             loading: false
         }
     }
+    // handling parent close popup call back through props
     handleClose = () => {
         this.props.handleClose();
     }
 
+    // handling on change event for all textboxes
     onchangeHandle = (key, e) => {
         let value = e.target.value;
         switch (key) {
@@ -86,16 +93,19 @@ class ApplyJob extends Component {
         }
     }
 
+    // handling and enabling loading spinner 
     handleLoading = () => {
         this.setState({ ...this.state, loading: true })
     }
 
+    // handling submiting of job submit
     handleSubmit = (e) => {
         // this.handleLoading();
         console.log(e)
         e.preventDefault();
         // this.setState({...this.state, validated:true})
         const form = e.currentTarget;
+        // caling validation function with sending state to function
         let res = validating(this.state)
         console.log("errors", res)
 
@@ -140,11 +150,11 @@ class ApplyJob extends Component {
     render() {
         return (
             <div>
-
                 <Modal show={this.props.show} onHide={() => this.handleClose()} >
                     {!this.state.loading ? <Modal.Header closeButton>
                         <Modal.Title>APPLY JOB</Modal.Title>
                     </Modal.Header> : null}
+                    {/* enabling and disabling loader based on function */}
                     {this.state.loading ? <CircleSpinnerOverlay loading={this.state.loading}
                         overlayColor="rgba(0,153,255,0.2)" color="#8f10b7"
                     /> :
@@ -158,7 +168,7 @@ class ApplyJob extends Component {
                                         onChange={(e) => this.onchangeHandle("name", e)}
                                         isInvalid={this.state.name.length === 0 && this.state.validated ? true : false}
 
-                                        autoFocus
+                                        
                                     />
                                     {
                                         this.state.errors.name ?
@@ -233,8 +243,6 @@ class ApplyJob extends Component {
                         </Modal.Body>}
 
                 </Modal>
-
-
             </div>
         );
     }

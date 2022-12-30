@@ -4,10 +4,15 @@ import c1 from '../images/carousel_1.jpg';
 import c2 from '../images/carousel_2.jpg';
 import c3 from '../images/carousel_3.jpg';
 import { Link } from 'react-router-dom';
+
 class Homepage extends Component {
+
+
     render() {
+
         return (
             <div className='homeComponent'>
+                {/* home page carousal */}
                 <Carousel>
                     <Carousel.Item interval={3500}>
                         <img
